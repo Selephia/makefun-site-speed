@@ -575,7 +575,7 @@ function inlineInto(s, a, b, out, env) {
     if (c === '\\') {
       if (j + 1 < b && ESCAPABLE.has(s[j + 1])) {
         if (j > seg) escInto(out, s, seg, j);
-        out.push(s[j + 1]);
+        escInto(out, s, j + 1, j + 2); // reference: escapeHtml(s[i + 1]) — '>' is escapable and must become &gt;
         i = j + 2;
         seg = i;
       } else {
